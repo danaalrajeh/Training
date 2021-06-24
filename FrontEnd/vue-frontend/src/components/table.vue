@@ -4,40 +4,40 @@
       <thead>
         <th>
           <div class="table-th">
-            <span class="lable">Student Name</span>
+            <span class="lable">ID</span>
           </div>
         </th>
 
         <th>
           <div class="table-th">
-            <span class="lable">Student ID</span>
+            <span class="lable">Name </span>
           </div>
         </th>
 
         <th>
           <div class="table-th">
-            <span class="lable">Total Grade</span>
+            <span class="lable">Salary</span>
           </div>
         </th>
       </thead>
 
       <tbody>
-        <tr v-for="user in users" :key="user.sname">
+        <tr v-for="user in users" :key="user.id">
           <td>
             <span>
-              <span class="table-lable">{{ user.sname }}</span>
+              <span class="table-lable">{{ user.id }}</span>
             </span>
           </td>
 
           <td>
             <span>
-              <span class="table-lable">{{ user.sid }}</span>
+              <span class="table-lable">{{ user.name }}</span>
             </span>
           </td>
 
           <td>
             <span>
-              <span class="table-lable">{{ user.tgrade }}</span>
+              <span class="table-lable">{{ user.salary }}</span>
             </span>
           </td>
         </tr>
@@ -84,17 +84,40 @@
 </template>
 
 <script>
+/*export async function getAllUsers() {
+
+    const response = await fetch('/http://localhost:3001/employees');
+    return await response.json();
+}*/
+
+
+
+/*export async function createUser(data) {
+    const response = await fetch('/http://localhost:3001/employees', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({user: data})
+      })
+    return await response.json();
+}*/
+
+const axios = require('axios');
+
+
 export default {
   name: "tables",
   data() {
     return {
       users: [
-        { sname: "Lama", sid: 1, tgrade: 99 },
-        { sname: "Haifa", sid: 2, tgrade: 98 },
-        { sname: "Sara", sid: 3, tgrade: 99 },
+        
       ],
     };
   },
+   mounted () {
+    axios
+      .get('http://localhost:3001/employees')
+      .then(response => (this.users = response.data))
+  }
 };
 </script>
 

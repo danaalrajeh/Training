@@ -1,6 +1,12 @@
 var express = require ('express');
  
 var app = express();
+app.use(function (req, res, next) {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET");
+  res.setHeader("Content-Security-Policy", "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline' 'unsafe-eval' ; img-src * data: blob: 'unsafe-inline'; frame-src *; style-src * 'unsafe-inline';");
+  next();
+  });
  
 //importat to enable api to parse the request body 
 app.use(express.json());
