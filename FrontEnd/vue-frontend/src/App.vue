@@ -1,6 +1,6 @@
 <template>
  <div>
-   <h1 class="c2">Welcome !!</h1>
+   <h1 class="c2">Welcome to the Employees Dashboard !!</h1>
    <my-header></my-header>
    <my-footer></my-footer>
    <my-table></my-table>

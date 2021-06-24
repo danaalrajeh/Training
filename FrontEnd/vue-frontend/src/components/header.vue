@@ -20,7 +20,7 @@
 
         <li class="w-nav__item">
           <router-link to="/Sgrade" class="nav-item nav-link">
-            Student Grades
+            Employees Salary
           </router-link>
         </li>
 
